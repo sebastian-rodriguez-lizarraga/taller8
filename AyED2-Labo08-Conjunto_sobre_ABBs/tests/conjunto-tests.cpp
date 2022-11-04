@@ -59,6 +59,8 @@ TEST(conjunto_test, test_insertar_remover_un_valor) {
     EXPECT_EQ(c.cardinal(), 1);
 }
 
+
+
 TEST(conjunto_test, test_minimo) {
     Conjunto<int> c;
     c.insertar(5);
@@ -79,6 +81,8 @@ TEST(conjunto_test, test_maximo) {
     EXPECT_EQ(c.maximo(), 8);
 }
 
+
+
 TEST(conjunto_test, test_remover_caso_un_hijo) {
     Conjunto<int> c;
     c.insertar(5);
@@ -87,6 +91,9 @@ TEST(conjunto_test, test_remover_caso_un_hijo) {
     c.remover(6);
     EXPECT_EQ(c.cardinal(), 2);
 }
+
+
+
 
 TEST(conjunto_test, test_remover_caso_dos_hijos_simple) {
     Conjunto<int> c;
@@ -99,6 +106,10 @@ TEST(conjunto_test, test_remover_caso_dos_hijos_simple) {
     EXPECT_EQ(c.cardinal(), 4);
 }
 
+
+
+
+
 TEST(conjunto_test, test_remover_caso_dos_hijos_raiz) {
     Conjunto<int> c;
     c.insertar(5);
@@ -109,6 +120,8 @@ TEST(conjunto_test, test_remover_caso_dos_hijos_raiz) {
     c.remover(5);
     EXPECT_EQ(c.cardinal(), 4);
 }
+
+
 
 
 TEST(conjunto_test, test_remover_caso_dos_hijos_doble) {
@@ -126,6 +139,10 @@ TEST(conjunto_test, test_remover_caso_dos_hijos_doble) {
     EXPECT_EQ(c.cardinal(), 8);
 }
 
+
+
+
+
 TEST(conjunto_test, test_siguiente_inorder) {
     Conjunto<int> c;
     c.insertar(5);
@@ -137,22 +154,26 @@ TEST(conjunto_test, test_siguiente_inorder) {
     c.insertar(24);
     c.insertar(22);
     c.insertar(25);
-/*
+
     EXPECT_EQ(c.siguiente(20), 22);
-    EXPECT_EQ(c.siguiente(4), 5);
+
     EXPECT_EQ(c.siguiente(15), 16);
-    */
+
+    EXPECT_EQ(c.siguiente(4), 5);
+
 }
 
-const int NCLAVES = 1000;
 
+
+const int NCLAVES = 1000;
 int clave(int i) {
 	return NCLAVES * ((i * i - 100 * i) % NCLAVES) + i;
 }
 
+
+
 TEST(conjunto_test, test_stress) {
     Conjunto<int> c;
-
     // Insertar
     for (int i = 0; i < NCLAVES; i++) {
 	    int k = clave(i);
@@ -162,6 +183,8 @@ TEST(conjunto_test, test_stress) {
 	    ASSERT_TRUE(c.pertenece(k));
     }
     ASSERT_EQ(c.cardinal(), NCLAVES);
+
+
 
     // Insertar de nuevo
     for (int i = 0; i < NCLAVES; i++) {
@@ -181,7 +204,10 @@ TEST(conjunto_test, test_stress) {
 	    	ASSERT_FALSE(c.pertenece(k));
 	    }
     }
+
     ASSERT_EQ(c.cardinal(), NCLAVES / 2);
+
+
 
     // Eliminar los valores para i impar
     for (int i = 0; i < NCLAVES; i++) {
@@ -196,9 +222,13 @@ TEST(conjunto_test, test_stress) {
     }
     ASSERT_EQ(c.cardinal(), 0);
 
+
     // Verificar que no haya valores
     for (int i = 0; i < NCLAVES; i++) {
 	    int k = clave(i);
 	    ASSERT_FALSE(c.pertenece(k));
     }
+
 }
+
+

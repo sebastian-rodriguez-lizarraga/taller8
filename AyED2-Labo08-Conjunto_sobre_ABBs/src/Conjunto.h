@@ -34,10 +34,10 @@ class Conjunto
         const T& siguiente(const T& elem);
 
         // Devuelve el mínimo elemento del conjunto según <.
-        const T& minimo() const;
+        const T minimo() const;
 
         // Devuelve el máximo elemento del conjunto según <.
-        const T& maximo() const;
+        const T maximo() const;
 
         // Devuelve la cantidad de elementos que tiene el conjunto.
         unsigned int cardinal() const;
@@ -74,9 +74,9 @@ class Conjunto
 
     unsigned int cardinalAux(Nodo* elem) const; //va en a parte privada por que el usuario no la va a usar nunca
 
-    const T& minimoAux(Nodo* a) const;
+    const T minimoAux(Nodo* a) const;
 
-    const T& maximoAux(Nodo* a) const;
+    const T maximoAux(Nodo* a) const;
 
     Nodo* sucesorInmediato(Nodo* padre);
 
@@ -87,6 +87,9 @@ class Conjunto
     bool unSolohijo(Nodo* a);
 
     Nodo* hijoDeNodo(Nodo* a);
+
+    Nodo* padreDeNodo(Nodo* a);
+
 };
 
 
